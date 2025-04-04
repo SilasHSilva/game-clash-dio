@@ -31,7 +31,7 @@ classDiagram
     }
 
     User "1" *-- "1" Deck
-    User "1" *-- "N" Level
+    User "N" *-- "N" Level
     Deck "1" *-- "N" Card
 ```
 
