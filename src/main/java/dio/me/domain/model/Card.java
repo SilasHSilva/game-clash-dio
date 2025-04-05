@@ -1,11 +1,7 @@
 package dio.me.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Size;
 
 @Entity(name = "tb_card")
 public class Card {
@@ -13,10 +9,9 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String rarity;
-
-    @Size(min=1, max=14)
     private int level;
 
     @Max(1000)
@@ -28,59 +23,36 @@ public class Card {
     @Max(10)
     private int elixirCost;
 
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "deck_id")
+    private Deck deck;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() {return id;}
 
-    public String getName() {
-        return name;
-    }
+    public void setId(Long id) {this.id = id;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getName() {return name;}
 
-    public String getRarity() {
-        return rarity;
-    }
+    public void setName(String name) {this.name = name;}
 
-    public void setRarity(String rarity) {
-        this.rarity = rarity;
-    }
+    public String getRarity() {return rarity;}
 
-    public int getLevel() {
-        return level;
-    }
+    public void setRarity(String rarity) {this.rarity = rarity;}
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
+    public int getLevel() {return level;}
 
-    public int getDemage() {
-        return demage;
-    }
+    public void setLevel(int level) {this.level = level;}
 
-    public void setDemage(int demage) {
-        this.demage = demage;
-    }
+    public int getDemage() {return demage;}
 
-    public int getHitpoint() {
-        return hitpoint;
-    }
+    public void setDemage(int demage) {this.demage = demage;}
 
-    public void setHitpoint(int hitpoint) {
-        this.hitpoint = hitpoint;
-    }
+    public int getHitpoint() {return hitpoint;}
 
-    public int getElixirCost() {
-        return elixirCost;
-    }
+    public void setHitpoint(int hitpoint) {this.hitpoint = hitpoint;}
 
-    public void setElixirCost(int elixirCost) {
-        this.elixirCost = elixirCost;
-    }
+    public int getElixirCost() {return elixirCost;}
+
+    public void setElixirCost(int elixirCost) {this.elixirCost = elixirCost;}
+
 }

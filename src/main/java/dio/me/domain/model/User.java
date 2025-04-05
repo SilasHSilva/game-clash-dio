@@ -2,7 +2,8 @@ package dio.me.domain.model;
 
 import jakarta.persistence.*;
 
-@Entity(name = "tb_user")
+@Entity
+@Table(name = "tb_user")
 public class User {
 
     @Id
@@ -11,10 +12,11 @@ public class User {
 
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Deck deck;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "level_id")
     private Level level;
 
 
