@@ -28,12 +28,13 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 }
 
+tasks.jar {
+	manifest {
+		attributes["Main-Class"] = "dio.me.GameClashDioApplication"
+	}
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootRun {
-	systemProperties = System.properties
-	args = ['--server.port=8081']
-}
 
